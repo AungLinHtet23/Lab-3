@@ -1,4 +1,5 @@
 # Define a dictionary to store employee information
+
 employee_data = [
     {"name": "John", "age": 30, "department": "Sales", "salary": 50000},
     {"name": "Jane", "age": 25, "department": "Marketing", "salary": 60000},
@@ -20,19 +21,17 @@ def get_employees_by_age_range(age_lower_limit, age_upper_limit):
 
 def calculate_average_salary():
     total = 0
-    average = 0
-
-    #add your implementation to calculate here
-
-
+    n = len(employee_data)
+    for item in employee_data:
+        total += item['salary']
+    average = total / n if n > 0 else 0  # Calculate average after the loop
     return average
 
 def get_employees_by_dept(department):
     result = []
-
-    # Add your implementation from here
-
-
+    for item in employee_data:
+        if item["department"]== department:
+            result.append(item)
     return result
 
 def display_all_records():
@@ -67,8 +66,7 @@ def display_main_menu():
 
     elif option == '2':
         average_salary = calculate_average_salary()
-        print("Average salary = " + str(average_salary))
-
+        print(f"Average salary = {average_salary:.2f}")
     elif option == '3':
         age_lower_limit = input("age (Lower Limit) = ")
         age_upper_limit = input("age (Uper Limit) = ")
